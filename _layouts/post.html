@@ -2,9 +2,14 @@
 layout: default
 ---
 
+<!-- Copied from cosmicAC's Blog -->
 <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<script>
+$(()=>$("*").removeClass("language-plaintext"));
+</script>
 
 <!-- Post Header -->
 <style type="text/css">
@@ -40,7 +45,7 @@ layout: default
                     {% comment %} if page.subtitle {% endcomment %}
                     <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% comment %} endif {% endcomment %}
-                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
+                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }} {% if page.editdate %}/ Edited on {{ page.editdate | date: "%B %-d, %Y" }}{% endif %}</span>
                 </div>
             </div>
         </div>
@@ -146,7 +151,7 @@ layout: default
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
         				{% for tag in site.tags %}
-                            {% if tag[1].size > {{site.featured-condition-size}} %}
+                            {% if tag[1].size > site.featured-condition-size %}
                 				<a href="/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
                                     {{ tag[0] }}
                                 </a>
